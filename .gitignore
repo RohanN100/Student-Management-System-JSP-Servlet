@@ -1,0 +1,13 @@
+# Build folder
+build/
+
+# Compiled Java class files
+*.class
+
+# Eclipse settings
+.settings/
+.metadata/
+
+# OS generated files
+.DS_Store
+Thumbs.db
