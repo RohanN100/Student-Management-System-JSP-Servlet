@@ -10,7 +10,7 @@ public class StudentDAO {
 
     private String jdbcURL = "jdbc:mysql://localhost:3306/studentdb";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "rohan";   // apna password
+    private String jdbcPassword = "rohan";  
 
     private static final String INSERT_SQL =
             "INSERT INTO students (name, email, course) VALUES (?, ?, ?)";
@@ -27,7 +27,7 @@ public class StudentDAO {
     private static final String UPDATE_SQL =
             "UPDATE students SET name=?, email=?, course=? WHERE id=?";
 
-    // ================= CONNECTION =================
+    
     protected Connection getConnection() throws Exception {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,7 +36,7 @@ public class StudentDAO {
                 jdbcURL, jdbcUsername, jdbcPassword);
     }
 
-    // ================= INSERT =================
+    
     public void insertStudent(Student student) throws Exception {
 
         try (Connection connection = getConnection();
@@ -51,7 +51,7 @@ public class StudentDAO {
         }
     }
 
-    // ================= SELECT BY ID =================
+  
     public Student selectStudent(int id) throws Exception {
 
         Student student = null;
@@ -76,7 +76,7 @@ public class StudentDAO {
         return student;
     }
 
-    // ================= SELECT ALL =================
+ 
     public List<Student> selectAllStudents() throws Exception {
 
         List<Student> studentsList = new ArrayList<>();
@@ -100,7 +100,7 @@ public class StudentDAO {
         return studentsList;
     }
 
-    // ================= DELETE =================
+    
     public void deleteStudent(int id) throws Exception {
 
         try (Connection connection = getConnection();
@@ -111,11 +111,10 @@ public class StudentDAO {
             statement.executeUpdate();
         }
 
-        // After delete check if table empty
+  
         resetAutoIncrementIfEmpty();
     }
 
-    // ================= UPDATE =================
     public void updateStudent(Student student) throws Exception {
 
         try (Connection connection = getConnection();
@@ -131,7 +130,7 @@ public class StudentDAO {
         }
     }
 
-    // ================= AUTO RESET =================
+    
     private void resetAutoIncrementIfEmpty() throws Exception {
 
         try (Connection connection = getConnection();
